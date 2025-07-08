@@ -9,7 +9,8 @@ class QueryExclude(Base):
     __tablename__ = "query_excludes"
 
     id = Column(Integer, primary_key=True)
-    query_id = Column(Integer, ForeignKey("queries.id", ondelete="CASCADE"))
+    query_id = Column(Integer, ForeignKey("queries.id", ondelete="CASCADE"), index=True)
     name = Column(String, nullable=False)
 
     query = relationship("Query", backref="excludes")
+

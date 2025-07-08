@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float, Index
 
 from sqlalchemy.orm import relationship
 
@@ -17,3 +17,7 @@ class QueryResponse(Base):
     lon = Column(Float)
 
     query = relationship("Query", backref="responses")
+
+    __table_args__ = (
+        Index("ix_queryresponse_query_id_name", "query_id", "name"),
+    )
