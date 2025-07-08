@@ -1,0 +1,16 @@
+fastapi==0.116.0
+uvicorn==0.35.0
+
+SQLAlchemy==2.0.41
+aiosqlite==0.21.0
+
+openai==1.93.2
+
+pydantic-settings==2.10.1
+pydantic==2.11.7
+pydantic-ai==0.3.6
+streamlit==1.46.1
+
+alembic==1.16.2
+python-dotenv==1.1.1
+

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: fastapi-backend
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./db_storage:/app/db_storage
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - API_URL=http://localhost:8001
+    restart: unless-stopped
+
+  streamlit:
+    build:
+      context: .
+    container_name: streamlit-frontend
+    command: streamlit run streamlit/frontend_app.py --server.port=8501 --server.headless=true
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    environment:
+      - API_URL=http://backend:8001
+    restart: unless-stopped

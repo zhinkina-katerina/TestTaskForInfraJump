@@ -1,0 +1,9 @@
+/.env
+/app.db
+/logs/app.log
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/.gitignore
+/.idea/dataSources.xml
+/.idea/misc.xml
+/.idea/TestTaskForInfrajump.iml
+/.idea/vcs.xml
