@@ -70,13 +70,13 @@ alembic upgrade head
 ### 6. Start the FastAPI server
 
 ```bash
-python app/main.py
+python main.py
 ```
 
 ### 7. Start the Streamlit frontend
 
 ```bash
-streamlit run streamlit/app.py
+streamlit run streamlit/frontend_app
 ```
 
 ---
