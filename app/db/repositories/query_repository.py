@@ -11,10 +11,10 @@ class QueryRepository:
         self.db = db
 
     async def save(
-        self,
-        query: Query,
-        excludes: list[str],
-        responses: list[dict]
+            self,
+            query: Query,
+            excludes: list[str],
+            responses: list[dict]
     ) -> Query:
         try:
             self.db.add(query)
@@ -62,4 +62,3 @@ class QueryRepository:
             .order_by(Query.created_at.desc())
         )
         return result.scalars().all()
-

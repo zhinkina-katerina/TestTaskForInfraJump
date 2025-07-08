@@ -4,6 +4,7 @@ import streamlit as st
 import requests
 import pydeck as pdk
 from dotenv import load_dotenv
+
 load_dotenv()
 
 API_URL = os.getenv("API_URL")
@@ -81,7 +82,8 @@ if st.button("Переглянути історію"):
         for q in history:
             st.markdown(f"### {q['city']} — {q['text']}")
             for loc in q["response_json"]:
-                st.markdown(f"- **{loc['name']}** — {loc['description']} (_{loc['coordinates']['lat']}, {loc['coordinates']['lng']}_)")
+                st.markdown(
+                    f"- **{loc['name']}** — {loc['description']} (_{loc['coordinates']['lat']}, {loc['coordinates']['lng']}_)")
             st.markdown("---")
     else:
         st.error("Не вдалося завантажити історію.")

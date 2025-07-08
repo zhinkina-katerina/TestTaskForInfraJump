@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 from app.db.db import Base
 
+
 class QueryResponse(Base):
     __tablename__ = "query_responses"
 

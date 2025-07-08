@@ -38,6 +38,3 @@ class LocationGenerator:
         logger.info("Generating locations for city: %s | text: %s | exclude: %s", city, text, exclude)
         result = await self.agent.run(prompt)
         return result.output
-
-
-

@@ -1,6 +1,8 @@
+from app.schemas.city import Coordinates
 from pydantic import BaseModel
-from typing import List, Optional, Any
+from typing import List, Optional
 from datetime import datetime
+
 
 class QueryCreate(BaseModel):
     city: str
@@ -8,18 +10,13 @@ class QueryCreate(BaseModel):
     exclude: Optional[List[str]]
     num_places: Optional[int] = 3
 
-# app/schemas/query.py
-from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime
-
 
 class ResponseItem(BaseModel):
     name: str
     description: Optional[str]
     country: Optional[str]
     url: Optional[str]
-    coordinates: dict  # {'lat': ..., 'lng': ...}
+    coordinates: Coordinates
 
     @classmethod
     def from_model(cls, obj):
@@ -28,7 +25,7 @@ class ResponseItem(BaseModel):
             description=obj.description,
             country=obj.country,
             url=obj.url,
-            coordinates={"lat": obj.lat, "lng": obj.lon}
+            coordinates=Coordinates(lat=obj.lat, lng=obj.lon)
         )
 
 
@@ -52,4 +49,3 @@ class QueryOut(BaseModel):
             response_json=[ResponseItem.from_model(r) for r in query.responses],
             created_at=query.created_at
         )
-
