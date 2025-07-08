@@ -1,1 +1,1 @@
-from .pydantic_ai_service import location_generator
+from .pydantic_ai_service import LocationGenerator

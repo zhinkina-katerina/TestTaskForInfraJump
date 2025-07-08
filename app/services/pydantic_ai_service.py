@@ -4,7 +4,6 @@ from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 
-from app.config import settings
 from app.schemas import City
 
 logger = logging.getLogger(__name__)
@@ -37,15 +36,8 @@ class LocationGenerator:
         )
 
         logger.info("Generating locations for city: %s | text: %s | exclude: %s", city, text, exclude)
-        try:
-            async with self.agent.iter(prompt) as run:
-                async for _ in run:
-                    pass
-            logger.info("Location generation completed successfully")
-            return run.result.output
-        except Exception as e:
-            logger.error("Error during location generation: %s", str(e))
-            raise e
+        result = await self.agent.run(prompt)
+        return result.output
 
 
-location_generator = LocationGenerator(api_key=settings.OPENAI_API_KEY)
+

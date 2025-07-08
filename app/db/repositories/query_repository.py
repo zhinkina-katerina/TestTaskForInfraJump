@@ -62,3 +62,4 @@ class QueryRepository:
             .order_by(Query.created_at.desc())
         )
         return result.scalars().all()
+
